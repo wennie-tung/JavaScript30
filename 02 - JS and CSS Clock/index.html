@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS + CSS Clock</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="clock">
+        <div class="clock-face">
+            <div class="hand hour-hand"></div>
+            <div class="hand min-hand"></div>
+            <div class="hand second-hand"></div>
+        </div>
+    </div>
+
+    <script>
+        const hourHand = document.querySelector('.hour-hand')
+        const minHand = document.querySelector('.min-hand')
+        const secondHand = document.querySelector('.second-hand')
+
+        function setDateTime() {
+            // 取得現在時間
+            const now = new Date();
+            console.log(now);
+
+            const seconds = now.getSeconds();
+            const mins = now.getMinutes();
+            const hours = now.getHours();
+            console.log(hours, mins, seconds);
+
+            // 換算現在時間的時鐘角度
+            const secondDegrees = ((360 / 60) * seconds) + 90;
+            const minDegrees = ((360 / 60) * mins) + 90;
+            const hourDegrees = ((360 / 12) * hours) + 90;
+
+            // 
+            secondHand.style.transform = `rotate(${secondDegrees}deg)`
+            minHand.style.transform = `rotate(${minDegrees}deg)`
+            hourHand.style.transform = `rotate(${hourDegrees}deg)`
+            
+
+        }
+        setInterval(setDateTime, 1000);
+        setDateTime();
+    </script>
+</body>
+
+</html>
+
+</html>
